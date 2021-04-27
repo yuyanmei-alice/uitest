@@ -1,1 +1,11 @@
 
+search:
+  - by: id
+    locator: searchkey
+    action: sendKeys
+    value: {{ keywords }}
+    description: 首页搜索功能，输入关键字
+  - by: name
+    locator: subjectsearch
+    action: click
+    description: 首页搜索功能, 点击搜素图标
