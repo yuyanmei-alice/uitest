@@ -13,13 +13,16 @@ class ReadConfig:
     def get_properties(section, option):
         config = ReadConfig.get_config_parser()
         config.read(os.path.join(os.environ['HOMEPATH'], 'iselenium.ini'))
-        # print(f"请将iselenium.ini文件copy到 {os.path.abspath(os.environ['HOMEPATH'])}")
         return config.get(section, option)
+
+    @staticmethod
+    def get_config_path():
+        return  os.path.join(os.environ['HOMEPATH'], 'iselenium.ini')
 
     @staticmethod
     def get_exec_env():
         """
-        通过在jenkins中设置env参数，切换用例执行换
+        通过在jenkins中设置env参数，切换用例执行环境
         :return:
         """
         try:
@@ -35,6 +38,5 @@ class ReadConfig:
 
 
 if __name__ == '__main__':
-    print(ReadConfig.get_properties('driver', 'chrome_driver'))
-
-
+    print(f"请将工程下config/iselenium.ini文件拷贝到{os.path.abspath(ReadConfig.get_config_path())}，"
+          f"并配置浏览器驱动地址以及访问起始地址")
